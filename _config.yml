@@ -1,1 +1,12 @@
-markdown: rdiscount
+markdown: rdiscount 
+permalink: /:year/:month/:day/:title 
+title: tanran
+url: http://tanran.me
+subscribe: 
+exclude: [ README.md, newpost.rb ]
+domain: tanran.me
+author: tanran
+email: tf1028@gmail.com
+auto: true
+twitterID: hagerhu
+duoshuoShortname: tanran
