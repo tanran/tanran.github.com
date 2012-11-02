@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: POST Window for OS X
+title: Window for OS X Guide
 date: 2012-11-02 15:05:06
 categories:
     - 
