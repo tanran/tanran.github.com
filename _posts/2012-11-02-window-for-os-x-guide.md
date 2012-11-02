@@ -8,8 +8,6 @@ tags:
     -
 ---
 
-Window for OS X Guide
-
 1. How Windows Work
 
 2. How a window is Displayed
