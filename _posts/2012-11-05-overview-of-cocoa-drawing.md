@@ -26,7 +26,7 @@ Like Quartz, Cocoa drawing uses the painter’s model for imaging. In the painte
 
 ##The Drawing Environment
 
-The drawing environment encompasses the digital canvas and graphics settings that determine the final look of your content. The canvas determines where your content is drawn, while the graphics settings control every aspect of drawing, including the size, color, quality, and orientation of your content.
+The drawing environment encompasses the **digital canvas** and **graphics settings** that determine the final look of your content. The canvas determines where your content is drawn, while the graphics settings control every aspect of drawing, including the size, color, quality, and orientation of your content.
 
 
 ###The Graphics Context
@@ -34,7 +34,7 @@ The drawing environment encompasses the digital canvas and graphics settings tha
 You can think of a graphics context as a **drawing destination**. A graphics context encapsulates all of the information needed to draw to an underlying canvas, including the current drawing attributes and a device-specific representation of the digital paint on the canvas. 
 
 
-NSGraphicsContext, represent the following drawing destinations:
+*NSGraphicsContext*, represent the following drawing destinations:
 
 * Windows (and their views)
 * Images (including bitmaps of all kinds)
@@ -47,9 +47,9 @@ By far, the most common drawing destination is your application's windows, and b
 
 ###The Graphics State
 
-In addition to managing the drawing destination, an NSGraphicsContext object also manages the graphics state associated with the current drawing destination. The graphics state consists of attributes that affect the way content is drawn, such as the line width, stroke color, and fill color. 
+In addition to managing the drawing destination, an *NSGraphicsContext* object also manages the graphics state associated with the current drawing destination. The graphics state consists of attributes that affect the way content is drawn, such as the line width, stroke color, and fill color. 
 
-The current graphics state can be saved on a stack that is maintained by the current graphics context object. Any subsequent changes to the graphics state can then be undone quickly by simply restoring the previous graphics state.
+The current graphics state can be **saved on a stack** that is maintained by the current graphics context object. Any subsequent changes to the graphics state can then be undone quickly by simply restoring the previous graphics state.
 
 
 ###The Coordinate System
@@ -83,7 +83,9 @@ Transparency is another factor that influences the appearance of colors.
 
 ##Basic Drawing Elements
 
-The creation of complex graphics often has a simple beginning. In Cocoa, everything you draw is derived from a set of basic elements that you assemble in your drawing code. These elements are fundamental to all drawing operations and are described in the following sections.
+The creation of complex graphics often has a simple beginning. 
+
+In Cocoa, everything you draw is derived from a set of basic elements that you assemble in your drawing code. These elements are fundamental to all drawing operations and are described in the following sections.
 
 
 ###Geometry Support
@@ -149,4 +151,4 @@ Nearly all drawing in Cocoa is done inside views. Views are objects that represe
 
 By default, window updates occur only in response to user actions. This means that your view’s **drawRect:** method is called only when something about your view has changed.
 
-By the time your drawRect: method is called, Cocoa has already locked the drawing focus on your view, saved the graphics state, adjusted the current transform matrix to your view's origin, and adjusted the clipping rectangle to your view's frame. All you have to do is draw your content.
+By the time your **drawRect:** method is called, Cocoa has already locked the drawing focus on your view, saved the graphics state, adjusted the current transform matrix to your view's origin, and adjusted the clipping rectangle to your view's frame. All you have to do is draw your content.

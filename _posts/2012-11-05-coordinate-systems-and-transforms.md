@@ -10,7 +10,7 @@ tags:
 
 Coordinate spaces simplify the drawing code required to create complex interfaces.
 
-In a standard Mac app, the window represents the base coordinate system for drawing, and all content must eventually be specified in that coordinate space when it is sent to the window server.
+In a standard Mac app, the window represents the **base coordinate system** for drawing, and all content must eventually be specified in that coordinate space when it is sent to the window server.
 
 Each Cocoa view you add to a window maintains its own local coordinate system for drawing. Rather than convert coordinate values to window coordinates, you simply draw using the local coordinate system, ignoring any changes to the position of the view.
 
@@ -19,7 +19,7 @@ Even with the presence of local coordinate spaces, it is often necessary to chan
 
 ##Coordinate Systems Basics
 
-Cocoa and Quartz use the same base coordinate system model. 
+**Cocoa** and **Quartz** use the same base coordinate system model. 
 
 
 ###Local Coordinate Systems
@@ -28,28 +28,28 @@ Cocoa uses a **Cartesian coordinate system** as its basic model for specifying c
 
 If you were forced to draw all your content in screen coordinates—the coordinate system whose origin is located at the lower-left corner of the computer’s primary screen—your code would be quite complex. 
 
-To simplify things, Cocoa sets up a local coordinate system whose origin is equal to the origin of the window or view that is about to draw. Subsequent drawing calls inside the window or view take place relative to this local coordinate system. Once the code finishes drawing, Cocoa and the underlying graphics system convert coordinates in the local coordinates back to screen coordinates so that the content can be composited with content from other applications and sent to the graphics hardware.
+To simplify things, Cocoa sets up a **local coordinate system** whose origin is equal to the origin of the window or view that is about to draw. Subsequent drawing calls inside the window or view take place relative to this local coordinate system. Once the code finishes drawing, Cocoa and the underlying graphics system convert coordinates in the local coordinates back to screen coordinates so that the content can be composited with content from other applications and sent to the graphics hardware.
 
 Mapping from screen coordinates to local window or view coordinates takes place in the current transformation matrix (CTM) of the Cocoa graphics context object.
 
 
 ###Points Versus Pixels
 
-The drawing system in OS X is based on a PDF drawing model, which is a vector-based drawing model. 
+The drawing system in OS X is based on a PDF drawing model, which is a **vector-based drawing model**. 
 
 Compared to a raster-based drawing model, where drawing commands operate on individual pixels, drawing commands in OS X are specified using **a fixed-scale drawing space**, known as the **user coordinate space**.
 
 
 ####User Space
 
-The user coordinate space in Cocoa is the environment you use for all your drawing commands. It represents a fixed scale coordinate space, which means that the drawing commands you issue in this space result in graphics whose size is consistent regardless of the resolution of the underlying device.
+The user coordinate space in Cocoa is the environment you use for all your drawing commands. It represents **a fixed scale coordinate space**, which means that the drawing commands you issue in this space result in graphics whose size is consistent regardless of the resolution of the underlying device.
 
-Units in the user space are based on the printer's point, which was used in the publishing industry to measure the size of content on the printed page. A single point is equivalent to 1/72 of an inch.
+Units in the user space are based on the **printer's point**, which was used in the publishing industry to measure the size of content on the printed page. **A single point is equivalent to 1/72 of an inch**.
 
 
 ####Device Space
 
-The device coordinate space refers to the native coordinate space used by the target device, whether it be a screen, printer, file, or some other device. Units in the device coordinate space are specified using pixels and the resolution of this space is device dependent. 
+The device coordinate space refers to the native coordinate space used by the target device, whether it be a screen, printer, file, or some other device. Units in the device coordinate space are specified using **pixels** and the resolution of this space is device dependent. 
 
 
 ####Resolution-Independent User Interface
