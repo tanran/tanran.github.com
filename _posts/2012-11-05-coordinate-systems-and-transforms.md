@@ -63,7 +63,7 @@ In OS X v10.4 and earlier, Quartz and Cocoa always treated screen devices as if 
 A transform is two-dimensional mathematical array used to map points from one coordinate space to another. Using transforms, you can scale, rotate, and translate content freely in two-dimensional space using only a few methods and undo your changes just as quickly. 
 
 
-＃＃＃The Identity Transform
+###The Identity Transform
 
 An identity transform maps any point to itself—that is, it does not transform the point at all. You always start with an identity transform and add transformations to it. Starting with the identity transform guarantees that you start from a known state. 
 
