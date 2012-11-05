@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: Cocoa Drawing Guide
+title: Overview of Cocoa Drawing
 date: 2012-11-05 14:46:24
 categories:
     - 
