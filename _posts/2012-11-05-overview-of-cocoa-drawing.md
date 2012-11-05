@@ -14,6 +14,8 @@ tags:
 4. Views and Drawing
 
 
+The Cocoa drawing environment is compatible with all of the other drawing technologies in OS X, including Quartz, OpenGL, Core Image, Core Video, Quartz Composer, PDF Kit, and QuickTime.
+
 In fact, most Cocoa classes use Quartz extensively in their implementations to do the actual drawing.
 
 
