@@ -69,7 +69,7 @@ An identity transform maps any point to itself—that is, it does not transform 
 
 To create an identity transform, you would use the following code:
 
-*NSAffineTransform* identityXform = [NSAffineTransform transform];*
+*NSAffineTransform identityXform = [NSAffineTransform transform];*
 
 
 ###Transformation Operations
@@ -127,10 +127,10 @@ The most noticeable change is that Cocoa adds the appropriate conversion transfo
 
 ###Drawing Content in a Flipped Coordinate System
 
-####Drawing Shape Primitives
-####Drawing With Application Kit Functions
-####Drawing Images
-####Drawing Text
+* Drawing Shape Primitives
+* Drawing With Application Kit Functions
+* Drawing Images
+* Drawing Text
 
 The text rendering facilities in Cocoa take their cues for text orientation from the current view.
 
