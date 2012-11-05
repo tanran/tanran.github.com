@@ -8,6 +8,11 @@ tags:
     -
 ---
 
+1. The Painter’s Model
+2. The Drawing Environment
+3. Basic Drawing Elements
+4. Views and Drawing
+
 
 In fact, most Cocoa classes use Quartz extensively in their implementations to do the actual drawing.
 
@@ -76,3 +81,70 @@ Transparency is another factor that influences the appearance of colors.
 
 ##Basic Drawing Elements
 
+The creation of complex graphics often has a simple beginning. In Cocoa, everything you draw is derived from a set of basic elements that you assemble in your drawing code. These elements are fundamental to all drawing operations and are described in the following sections.
+
+
+###Geometry Support
+
+* NSPoint
+
+Points specify the coordinates for a rendered element.
+
+* NSSize
+
+Sizes are used to specify dimensions of a target.
+
+* NSRect
+
+A rectangle data type is a compound structure composed of an origin point and a size.
+
+
+###Shape Primitives
+
+Cocoa provides support for drawing shape primitives with the NSBezierPath class to create the following basic shapes:
+
+* Lines
+* Rectangles
+* Ovals and circles
+* Arcs
+* Bezier cubic curves
+
+Bezier path objects store vector-based path information, making them compact and resolution independent. You can create paths with any of the simple shapes or combine the basic shapes together to create more complex paths.
+
+
+###Images
+
+Cocoa supports many different image formats, either directly or indirectly. Some of the formats Cocoa supports directly include the following:
+
+* Bitmap images, including the following image formats:
+BMP
+GIF
+JPEG
+JPEG 2000
+PNG
+TIFF
+* Images based on Encapsulated PostScript (EPS) data
+* Images based on Portable Document Format (PDF) data
+* Images based on PICT data
+* Core Image images
+
+
+###Gradients
+
+In OS X v10.5 and later, you can use the NSGradient class to create gradient fill patterns.
+
+
+###Text
+
+Cocoa provides an advanced text system for drawing everything from simple strings to formatted text flows.
+
+Text layout and rendering using the Cocoa text system is a very complicated process. For basic information about drawing text and for links to more advanced text-related documents, see “Text.”
+
+
+##Views and Drawing
+
+Nearly all drawing in Cocoa is done inside views. Views are objects that represent a visual portion of a window. Each view object is responsible for displaying some visual content and responding to user events in its visible area. A view may also be responsible for one or more subviews.
+
+By default, window updates occur only in response to user actions. This means that your view’s **drawRect:** method is called only when something about your view has changed.
+
+By the time your drawRect: method is called, Cocoa has already locked the drawing focus on your view, saved the graphics state, adjusted the current transform matrix to your view's origin, and adjusted the clipping rectangle to your view's frame. All you have to do is draw your content.
