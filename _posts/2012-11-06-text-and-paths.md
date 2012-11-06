@@ -92,7 +92,7 @@ The NSBezierPath class maintains both a custom and default version of each attri
 The following sections describe the attributes you can set for a path object and how those attributes affect your rendered paths.
 
 
-####Line Width
+1. Line Width
 
 The line width attribute controls the width of the entire path. 
 
@@ -101,33 +101,33 @@ Line width is measured in points and specified as a floating-point value. The de
 To change the default line width for all NSBezierPath objects, you use the *setDefaultLineWidth:* method. To set the line width for the current path object, you use the *setLineWidth:* method of that path object.
 
 
-####Line Cap Styles
+2. Line Cap Styles
 
 The current line cap style determines the appearance of the open end points of a path segment.
 
 To set the line cap style for a NSBezierPath object, use the *setLineCapStyle:* method. The default line cap style is set to **NSButtLineCapStyle**. To change the default line cap style, use the *setDefaultLineCapStyle:* method. 
 
 
-####Line Join Styles
+3. Line Join Styles
 
 The current line join style determines how connected lines in a path are joined at the vertices.
 
 To set the line join style for an NSBezierPath object, use the *setLineJoinStyle:* method. The default line join style is set to **NSMiterLineJoinStyle**. To change the default line join style, use the *setDefaultLineJoinStyle:* method.
 
 
-####Line Dash Style
+4. Line Dash Style
 
 The line dash style determines the pattern used to stroke a path. By default, stroked paths appear solid.
 
 The NSBezierPath class does not support the concept of a default line dash style. If you want a line dash style, you must apply it to a path explicitly using the *setLineDash:count:phase:* method.
 
 
-####Line Flatness
+5. Line Flatness
 
 The line flatness attribute determines the rendering accuracy for curved segments. The flatness value measures the maximum error tolerance (in pixels) to use during rendering. 
 
 
-####Miter Limits
+6. Miter Limits
 
 Miter limits help you avoid spikes that occur when you join two line segments at a sharp angle.
 
@@ -136,7 +136,7 @@ If the ratio of the miter length—the diagonal length of the miter—to the lin
 To set the miter limits for a specific NSBezierPath object, use the *setMiterLimit:* method. To set the default miter limit for newly created NSBezierPath objects, use *setDefaultMiterLimit:*. 
 
 
-####Winding Rules
+7. Winding Rules
 
 When you fill the area encompassed by a path, **NSBezierPath** applies the current winding rule to determine which areas of the screen to fill.
 
