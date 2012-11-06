@@ -60,7 +60,7 @@ In OS X v10.4 and earlier, Quartz and Cocoa always treated screen devices as if 
 
 ##Transform Basics
 
-A transform is two-dimensional mathematical array used to map points from one coordinate space to another. Using transforms, you can scale, rotate, and translate content freely in two-dimensional space using only a few methods and undo your changes just as quickly. 
+A transform is two-dimensional mathematical array used to map points from one coordinate space to another. Using transforms, you can **scale**, **rotate**, and **translate** content freely in two-dimensional space using only a few methods and undo your changes just as quickly. 
 
 
 ###The Identity Transform
@@ -81,12 +81,12 @@ The following sections describe each type of transformation and how it affects r
 
 ####Translation
 
-Translation involves shifting the origin of the current coordinate system horizontally and vertically by a specific amount.
+Translation involves **shifting** the origin of the current coordinate system horizontally and vertically by a specific amount.
 
 
 ####Scaling
 
-Scaling lets you stretch or shrink the units of the user space along the x and y axes independently. Normally, one unit in user space is equal to 1/72 of an inch. 
+Scaling lets you **stretch or shrink** the units of the user space along the x and y axes independently. Normally, one unit in user space is equal to 1/72 of an inch. 
 
 
 ####Rotation
@@ -97,7 +97,7 @@ Rotation changes the orientation of the coordinate axes by rotating them around 
 
 ###Transform Mathematics
 
-The NSAffineTransform class uses a 3 x 3 matrix to store the transform values.
+The *NSAffineTransform* class uses a 3 x 3 matrix to store the transform values.
 
 
 Once applied, a transform affects all subsequent drawing calls in the current context. To undo a set of transformations, you can either restore a previous graphics state or apply an inverse transform.
@@ -119,10 +119,10 @@ Configuring a view to use flipped coordinates affects only the content you draw 
 
 If you prefer to use flipped coordinates, there are two ways to configure your view’s coordinate system prior to drawing:
 
-1. Override your view’s isFlipped method and return YES.
+1. Override your view’s *isFlipped* method and return YES.
 2. Apply a flip transform to your content immediately prior to rendering.
 
-The most noticeable change is that Cocoa adds the appropriate conversion transform to the CTM before calling your view’s drawRect: method.
+The most noticeable change is that Cocoa adds the appropriate conversion transform to the CTM before calling your view’s *drawRect:* method.
 
 
 ###Drawing Content in a Flipped Coordinate System
@@ -141,6 +141,16 @@ If you want to flip the coordinate system of your view temporarily, you can crea
 
 A flip transform is an NSAffineTransform object configured with two transformations: a scale transformation and a translate transformation.
 
+
+- (void)drawRect:(NSRect)rect {
+    NSRect frameRect = [self bounds];
+    NSAffineTransform* xform = [NSAffineTransform transform];
+    [xform translateXBy:0.0 yBy:frameRect.size.height];
+    [xform scaleXBy:1.0 yBy:-1.0];
+    [xform concat];
+ 		
+    // Draw flipped content.
+}
 
 
 ###Cocoa Use of Flipped Coordinates
@@ -162,13 +172,13 @@ The following controls and views currently use flipped coordinates by default:
 
 Some Cocoa classes support flipped coordinates but do not use them all the time. The following list includes the known cases where flipped-coordinate support depends on other mitigating factors.
 
-Images do not use flipped coordinates by default; however, you can flip the image’s internal coordinate system manually using the setFlipped: method of NSImage. 
+* Images do not use flipped coordinates by default; however, you can flip the image’s internal coordinate system manually using the *setFlipped:* method of *NSImage*. 
 
-The Cocoa text system takes cues from the current context to determine whether text should be flipped.
+* The Cocoa text system takes cues from the current context to determine whether text should be flipped.
 
-An NSClipView object determines whether to use flipped coordinates by looking at the coordinate system of its document view.
+* An *NSClipView* object determines whether to use flipped coordinates by looking at the coordinate system of its document view.
 
-Graphics convenience functions, such as those declared in NSGraphics.h, take flipped coordinate systems into account when drawing.
+* Graphics convenience functions, such as those declared in *NSGraphics.h*, take flipped coordinate systems into account when drawing.
 
 
 
@@ -184,14 +194,14 @@ The following list includes some approaches to take when designing your interfac
 
 * Use high-resolution images.
 * During layout, make sure views and images are positioned on integral pixel boundaries.
-* When creating tiled background images for custom controls, use the NSDrawThreePartImage and NSDrawNinePartImage methods to draw your background rather than trying to draw it yourself.
-* Use antialiased text rendering modes for non-integral scale factors and be sure to lay out your text views on pixel boundaries.
+* When creating tiled background images for custom controls, use the *NSDrawThreePartImage* and *NSDrawNinePartImage* methods to draw your background rather than trying to draw it yourself.
+* Use **antialiased text rendering modes** for non-integral scale factors and be sure to lay out your text views on pixel boundaries.
 * Test your applications with non-integral scale factors such as 1.25 and 1.5. These factors tend to generate odd numbers of pixels, which can reveal potential pixel cracks.
 
 
 ###Accessing the Current Scale Factor
 
-The **NSWindow** and **NSScreen** classes both include a **userSpaceScaleFactor** method that you can call to obtain the current scale factor, if any, for your application. 
+The *NSWindow* and *NSScreen* classes both include a *userSpaceScaleFactor* method that you can call to obtain the current scale factor, if any, for your application. 
 
 
 ###Adjusting the Layout of Your Content
