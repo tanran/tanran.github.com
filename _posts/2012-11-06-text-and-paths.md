@@ -182,6 +182,13 @@ You can draw lines in the following ways:
 
 ###Adding Rectangles
 
+Rectangles are used frequently, there are several options for drawing them.
+
+* Use the methods of NSBezierPath to create your rectangle.
+* Create rectangles using the Cocoa functions described in “Drawing Rectangles.”
+* Create a rectangle using individual lines as described in “Adding Lines and Polygons.”
+
+
 ###Adding Rounded Rectangles
 
 In OS X v10.5 and later, the NSBezierPath class includes the following methods for creating rounded-rectangles:
