@@ -20,13 +20,13 @@ The bare-minimum steps required for this are few:
 * Implement one or more NSResponder methods to handle events of particular types.
 * If your view is to handle action messages passed to it via the responder chain, implement the appropriate action methods.
 
-NSView inherits the NSResponder implementations of the methods for handling mouse events; in these methods, NSResponder simply passes the message up the responder chain. One of these objects in the responder chain can implement a method in a way that ensures your custom view won’t see subsequent related mouse events. Because of this, custom NSView objects should not invoke super in their implementations of NSResponder mouse-event-handling methods such as mouseDown:, mouseDragged: and mouseUp: unless it is known that the inherited implementation provides some needed functionality.
+NSView inherits the NSResponder implementations of the methods for handling mouse events; in these methods, NSResponder simply passes the message up the responder chain. One of these objects in the responder chain can implement a method in a way that ensures your custom view won’t see subsequent related mouse events. Because of this, **custom NSView objects should not invoke super in their implementations of NSResponder mouse-event-handling methods** such as mouseDown:, mouseDragged: and mouseUp: unless it is known that the inherited implementation provides some needed functionality.
 
 
 
 ##Implementing Action Methods
 
-Action messages are typically sent by NSMenuItem objects or by NSControl objects. The latter objects usually work together with one or more NSCell objects. 
+Action messages are typically sent by **NSMenuItem** objects or by **NSControl** objects. The latter objects usually work together with one or more **NSCell** objects. 
 
 Action methods, unlike NSResponder event methods, don’t have default implementations, so responder subclasses shouldn’t blindly forward action messages to super.
 
@@ -38,7 +38,7 @@ In keyboard action messages, an action method is invoked as a result of a partic
 
 ##Getting the Location of an Event
 
-You can get the location of a mouse or tablet-pointer event by sending locationInWindow to an NSEvent object. But, as the name of the method denotes, this location (an NSPoint structure) is in the base coordinate system of a window, not in the coordinate system of the view that typically handles the event.
+You can get the location of a mouse or tablet-pointer event by sending *locationInWindow* to an *NSEvent* object. But, as the name of the method denotes, this location (an NSPoint structure) is in the **base coordinate system of a window**, not in the coordinate system of the view that typically handles the event.
 
 
 
@@ -46,7 +46,7 @@ You can get the location of a mouse or tablet-pointer event by sending locationI
 
 On occasion you might need to discover the type of an event.
 
-from elsewhere in an application you can always obtain the currently handled event by sending currentEvent to NSApp.
+from elsewhere in an application you can always obtain the currently handled event by sending **currentEvent** to NSApp.
 
 A common test performed in event-handling methods is finding out whether specific modifier keys were pressed at the same moment as a key-press, mouse click, or similar user action. The modifier key usually imparts special significance to the event. 
 
@@ -56,7 +56,7 @@ A common test performed in event-handling methods is finding out whether specifi
 
 ###Determining First-Responder Status
 
-Usually an NSResponder object can always determine if it's currently the first responder by asking its window (or itself, if it's an NSWindow object) for the first responder and then comparing itself to that object.
+Usually an NSResponder object can always determine if it's currently the first responder by asking its **window** (or itself, if it's an NSWindow object) for the first responder and then comparing itself to that object.
 
 
 ###Setting the First Responder
