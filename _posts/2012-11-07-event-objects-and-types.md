@@ -16,7 +16,7 @@ Almost all events in a Cocoa application are represented by objects of the NSEve
 
 An NSEvent object—or, simply, an event object—contains pertinent information about an input action such as a mouse click or a key press. It stores such details as where the mouse was located or which character was typed. 
 
-The window server associates each user action with a window and reports the event (in a lower-level form) to the application that created the window. The application temporarily places each event in a buffer called the event queue. When the application is ready to process an event, the application object (NSApp) takes one from the queue (usually the topmost one in the queue) and converts it to an NSEvent object before dispatching it to the appropriate objects in an application.
+The **window server** associates each **user action** with a window and reports the event (in a lower-level form) to the application that created the window. The application temporarily places each event in a buffer called the **event queue**. When the application is ready to process an event, the application object (NSApp) **takes** one from the queue (usually the topmost one in the queue) and **converts** it to an NSEvent object before **dispatching** it to the appropriate objects in an application.
 
 
 ###Attributes of an Event Object

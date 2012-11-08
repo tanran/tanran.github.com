@@ -26,12 +26,12 @@ A primary responsibility of an event-driven application is to handle user events
 An event is a low-level record of a user action that is usually routed to the application in which the action occurred.
 
 When the user presses a key or clicks a button or moves a stylus, the device detects the action and initiates a transfer of data to the **device driver** associated with it. 
-Through the I/O Kit, the device driver creates a low-level event, puts it in the window server's event queue, and notifies the **window server**. 
+Through the I/O Kit, the device driver creates **a low-level event**, puts it in the window server's event queue, and notifies the **window server**. 
 The window server dispatches the event to the appropriate **run-loop port of the target process**. From there the event is forwarded to the **event-handling mechanism** appropriate to the application environment. 
 
 Before it dispatches an event to an application, the window server processes it in various ways; it time-stamps it, annotates it with the associated window and process port, and possibly performs other tasks as well.
 
-In OS X, events are delivered as an asynchronous stream. This event stream proceeds “upward” (in an architectural sense) through the various levels of the system—the hardware to the window server to the Event Manager—until each event reaches its final destination: an application. 
+In OS X, events are delivered as **an asynchronous stream**. This event stream proceeds “upward” (in an architectural sense) through the various levels of the system—the **hardware** to the **window server** to the **Event Manager**—until each event reaches its final destination: **an application**. 
 
 As it passes through each subsystem, an event may change structure but it still identifies a specific user action.
 
@@ -46,9 +46,9 @@ A Cocoa application is event driven: It fetches an event from the queue, dispatc
 
 In the main event loop, the application object (NSApp) continuously **gets** the next (topmost) event in the event queue, **converts** it to an NSEvent object, and **dispatches** it toward its final destination.
 
-It performs this fetching of events by invoking the nextEventMatchingMask:untilDate:inMode:dequeue: method in a closed loop. When there are no events in the event queue, this method blocks, resuming only when there are more events to process.
+It performs this fetching of events by invoking the *nextEventMatchingMask:untilDate:inMode:dequeue:* method in a closed loop. When there are no events in the event queue, this method blocks, resuming only when there are more events to process.
 
-After fetching and converting an event, NSApp performs the first stage of event dispatching in the *sendEvent:* method.
+After fetching and converting an event, NSApp performs the first stage of **event dispatching** in the *sendEvent:* method.
 
 In most cases NSApp merely **forwards the event to the window** in which the user action occurred by invoking the *sendEvent:* method of that NSWindow object. The window object then **dispatches** most events to the NSView object associated with the user action in an NSResponder message such as mouseDown: or keyDown:. 
 
@@ -57,9 +57,9 @@ The object receiving an event message differs slightly by type of event.
 
 ###The Path of Mouse and Tablet Events
 
-As noted above, an NSWindow object in its sendEvent: method forwards mouse events to the view over which the user action involving the mouse occurred. 
+As noted above, an NSWindow object in its *sendEvent:* method forwards mouse events to the view over which the user action involving the mouse occurred. 
 
-It identifies the view to receive the event by invoking the NSView method hitTest:, which returns the lowest descendant that contains the cursor location of the event (this is usually the topmost view displayed). The window object forwards the mouse event to this view by sending it a mouse-related NSResponder message specific to its exact type, such as mouseDown:, mouseDragged:, or rightMouseUp:, On (left) mouse-down events, the window object also asks the receiving view whether it is willing to become first responder for subsequent key events and action messages.
+It identifies the view to receive the event by invoking the NSView method *hitTest:*, which returns the lowest descendant that contains the cursor location of the event (this is usually the topmost view displayed). The window object forwards the mouse event to this view by sending it a mouse-related NSResponder message specific to its exact type, such as mouseDown:, mouseDragged:, or rightMouseUp:, On (left) mouse-down events, the window object also asks the receiving view whether it is willing to become first responder for subsequent key events and action messages.
 
 A view object can receive mouse events of three general types: mouse clicks, mouse drags, and mouse movements.
 
@@ -87,7 +87,7 @@ If the application object processes a key event and it turns out not to be a key
 
 ###Other Event Dispatching
 
-An NSWindow object monitors tracking-rectangle events and dispatches these events directly to the owning object in mouseEntered: and mouseExited: messages.
+An NSWindow object monitors tracking-rectangle events and dispatches these events directly to the owning object in *mouseEntered:* and *mouseExited:* messages.
 
 Periodic events (type NSPeriodic) are generated by the application at a specified frequency and placed in the event queue.
 
@@ -95,9 +95,9 @@ Periodic events (type NSPeriodic) are generated by the application at a specifie
 
 ##Action Messages
 
-Actions are commands that objects, usually NSControl or NSMenu objects, give to the application object to dispatch as messages to a particular target or to any target that’s willing to respond to them. 
+Actions are commands that objects, usually *NSControl* or *NSMenu* objects, give to the application object to dispatch as messages to a particular target or to any target that’s willing to respond to them. 
 
-Event and action methods are dispatched in different ways, by different methods. Nearly all events enter an application from the window server and are dispatched automatically by the *sendEvent:* method of NSApplication. Action messages, on the other hand, are dispatched by the *sendAction:to:from:* method of the global application object (NSApp) to their proper destinations.
+Event and action methods are dispatched in different ways, by different methods. Nearly all events enter an application from the **window server** and are dispatched automatically by the *sendEvent:* method of NSApplication. Action messages, on the other hand, are dispatched by the *sendAction:to:from:* method of the **global application object (NSApp)** to their proper destinations.
 
 The target of an action message is handled by the Application Kit in a special way. If the intended target isn’t nil, the action is simply sent directly to that object; this is called a **targeted action message**. In the case of an untargeted action message (that is, the target parameter is nil), *sendAction:to:from:* searches up the full responder chain (starting with the first responder) for an object that implements the action method specified. If it finds one, it sends the message to that object with the initiator of the action message as the sole argument. 
 
