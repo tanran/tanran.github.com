@@ -11,6 +11,9 @@ tags:
 Xcode includes software development kits (SDKs) that enable you to create applications that run on specific versions of iOS or OS X—including versions different from the one you are developing on. This technology lets you build a single binary that takes advantage of new features when running on a system that supports them, and gracefully degrades when running on an older system. Some Apple frameworks automatically modify their behavior based on the SDK an application is built against for improved compatibility.
 
 
+---
+
+
 #Overview of SDK-Based Development
 
 Apple makes SDKs available for specific versions of iOS and OS X. Using these SDKs allows you to build against the headers and libraries of an operating system version other than the one you're running on.
@@ -104,7 +107,7 @@ If you are using Objective-C, it’s preferable to use the #import directive rat
 ---
 
 
-##Using SDK-Based Development
+#Using SDK-Based Development
 
 This chapter describes SDK-based development techniques to use in your Xcode projects, explaining how you can:
 
