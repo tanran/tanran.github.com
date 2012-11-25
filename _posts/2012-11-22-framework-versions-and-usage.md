@@ -105,6 +105,9 @@ For simple changes, such as bug fixes and most new interfaces, you may need to i
 For more extensive changes, you must create a new major version of your framework.
 
 
+---
+
+
 #Frameworks and Binding
 
 Dynamic binding of Mach-O libraries brings a considerable power and flexibility to OS X. Through dynamic binding, frameworks can be updated transparently without requiring applications to relink to them. At runtime, a single copy of the library’s code is shared among all the processes using it, thus reducing memory usage and improving system performance.
@@ -168,6 +171,9 @@ Improvements to the dynamic loader in OS X v10.3.4 made prebinding largely unnec
 In OS X v10.4, another change was introduced to the prebinding behavior to reduce the amount of time spent "optimizing" the system after installing new software. Instead of prebinding all frameworks and libraries, now only select system frameworks are prebound. By selectively choosing which frameworks are prebound, the prebinding tools are able to tightly pack the system's most frequently-used frameworks into a smaller memory space than before. This step reduces the amount of space reserved for Apple frameworks and gives it back to third-party applications and frameworks.
 
 If you are developing frameworks for OS X v10.4 or later, prebinding is not required. Prebinding your framework on later versions of the system does not decrease performance, but does require some additional configuration steps, which are described in the sections that follow.
+
+
+---
 
 
 #Frameworks and Weak Linking
